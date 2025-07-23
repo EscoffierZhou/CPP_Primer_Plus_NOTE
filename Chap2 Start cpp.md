@@ -39,113 +39,131 @@ int main()
 
 该示例包含:注释+预处理器编译指令+函数头+函数体+输入输出+结束语句
 
+****
+
 **1.作为接口的函数头main函数**
 
->*函数体:`function(argument list)`*
+*函数体:`function(argument list)`*
+
+`main()`函数不接受任何参数的传入
+
+int类型表示函数最后的返回值是整型
+
+>可替代的写法:`int main()`/`main()`/`int main(void)`/`void main()`
 >
->`main()`函数不接受任何参数的传入
->
->int类型表示函数最后的返回值是整型
->
->>   可替代的写法:`int main()`/`main()`/`int main(void)`/`void main()`
->>
->>   **传统的ANSI/ISOC++标准是必须要有返回值的,现在倒是无所谓了**
->
->`main()`函数在程序中必须存在,因为程序需要从该函数开始执行->未定义错误
->
->如果是动态链接库(DLL)模块(控制器芯片)可能不要`main()`但仍有``_tmain()``
+>**传统的ANSI/ISOC++标准是必须要有返回值的,现在倒是无所谓了**
+
+`main()`函数在程序中必须存在,因为程序需要从该函数开始执行->未定义错误
+
+如果是动态链接库(DLL)模块(控制器芯片)可能不要`main()`但仍有``_tmain()``
+
+****
 
 **2.C++注释**
 
->   使用`//`来作为行注释
->
->   使用`/* */`来作为块注释
+使用`//`来作为行注释
+
+使用`/* */`来作为块注释
+
+****
 
 **3.C++预处理器和iostream文件**
 
->   这里iostream文件是一种对基本C++进行编译的预处理器
->
->   (input-output-stream)输入输出流:包含`cout`,`cin`等用法
->
->   `#`开头的视作编译指令
->
->   <font color=red>原始文件并没有被修改,源代码文件和iostream组成复合文件进行编译</font>
+这里iostream文件是一种对基本C++进行编译的预处理器
+
+(input-output-stream)输入输出流:包含`cout`,`cin`等用法
+
+`#`开头的视作编译指令
+
+<font color=red>原始文件并没有被修改,源代码文件和iostream组成复合文件进行编译</font>
+
+****
 
 **4.头文件h**
 
->**头文件是支持一组特定工具的文件**
->
->`iostream`是一种包含文件,包含于其它文件之中
->
->| C++ old | iostream.h | C++可用                |
->| ------- | ---------- | ---------------------- |
->| C old   | math.h     | C/C++都可用            |
->| C++ new | iostream   | C++可用(namespace std) |
->| C new   | math       | C++可用(namespace std) |
+**头文件是支持一组特定工具的文件**
+
+`iostream`是一种包含文件,包含于其它文件之中
+
+| C++ old | iostream.h | C++可用                |
+| ------- | ---------- | ---------------------- |
+| C old   | math.h     | C/C++都可用            |
+| C++ new | iostream   | C++可用(namespace std) |
+| C new   | math       | C++可用(namespace std) |
+
+****
 
 **<font color=red>5.namespace</font>**
 
->   `using namespace std;`是using编译指令(Chap9再学)
->
->   namespace名称空间存在的意义就是对相同命名的函数进行选择
->
->   ```
->   // 比如 CIEL 和 KAF 公司产品都有KAMITSUBAKI()函数
->   CIEL::KAMITSUBAKI("1st ONE-MAN LIVE")
->   KAF::KAMITSUBAKI("4th ONE-MAN LIVE")
->   ```
->
->   **所以如果使用C++的标准组件,即名为`std::component()`**可以偷懒
->
->   ```cpp
->   # 完整写法
->   std::cin >> CIEL;
->   std::cout << "I LOVE CIEL"<< std::endl;
->   # lazy approach
->   using namespace std;
->   cin >> CIEL;
->   cout << "I LOVE CIEL"<< endl;
->   ```
+`using namespace std;`是using编译指令(Chap9再学)
+
+namespace名称空间存在的意义就是对相同命名的函数进行选择
+
+```
+// 比如 CIEL 和 KAF 公司产品都有KAMITSUBAKI()函数
+CIEL::KAMITSUBAKI("1st ONE-MAN LIVE")
+KAF::KAMITSUBAKI("4th ONE-MAN LIVE")
+```
+
+**所以如果使用C++的标准组件,即名为`std::component()`**可以偷懒
+
+```cpp
+# 完整写法
+std::cin >> CIEL;
+std::cout << "I LOVE CIEL"<< std::endl;
+# lazy approach
+using namespace std;
+cin >> CIEL;
+cout << "I LOVE CIEL"<< endl;
+```
+
+****
 
 **<font color=red>6.`cout`和函数运算符重载</font>**
 
->   (这里默认使用了lazy approach,即`std::cout`)
+(这里默认使用了lazy approach,即`std::cout`)
+
+1.输出文字流:`cout << "My waifu CIEL";`
+
+2.输出文字对象:`cout << sentence << endl`
+
+**(其中`<<`将字符串发送给cout,cout是一个预定义的对象[类的示例])**
+
+**函数运算符重载`<`:通过重载使得运算符根据上下文有不同的含义**
+
+>   C中的&:可以表示地址运算符,可以表示按位AND运算符
 >
->   1.输出文字流:`cout << "My waifu CIEL";`
->
->   2.输出文字对象:`cout << sentence << endl`
->
->   **(其中`<<`将字符串发送给cout,cout是一个预定义的对象[类的示例])**
->
->   **函数运算符重载`<`:通过重载使得运算符根据上下文有不同的含义**
->
->   >C中的&:可以表示地址运算符,可以表示按位AND运算符
->   >
->   >C中的\*:可以表示乘法运算符,可以表示指针解出引用
+>   C中的\*:可以表示乘法运算符,可以表示指针解出引用
+
+****
 
 **7.控制符`endl`**
 
->   `endl`是作用于`cout`的符号,因此被称作控制符(manipulator)
->
->   其主要作用就是将光标移动到下一行开头
->
->   可以在语句之后声明;可以单独起一行声明
->
->   **当然转义序列`\n`也可以在C++中使用,直接加入语句最后**
+`endl`是作用于`cout`的符号,因此被称作控制符(manipulator)
+
+其主要作用就是将光标移动到下一行开头
+
+可以在语句之后声明;可以单独起一行声明
+
+**当然转义序列`\n`也可以在C++中使用,直接加入语句最后**
+
+****
 
 **8.C++的书写标准**
 
->   每个token之间必须分开,token之间不要产生冲突
->
->   空格和回车在不影响token的前提下可以随便整
->
->   每条语句占一行
->
->   每个函数都有两个花括号(每个花括号各占一行)
->
->   函数中的语句都相对于花括号进行缩进
->
->   **圆括号周围没有空白**
+每个token之间必须分开,token之间不要产生冲突
+
+空格和回车在不影响token的前提下可以随便整
+
+每条语句占一行
+
+每个函数都有两个花括号(每个花括号各占一行)
+
+函数中的语句都相对于花括号进行缩进
+
+**圆括号周围没有空白**
+
+****
 
 **9.HUAWEI华为C++编写标准**
 
@@ -240,37 +258,41 @@ int main()
 
 **1.变量**
 
->   `int carrots;`:需要的内存+内存单元的名称(carrots为变量)
->
->   定义声明语句:使得编译器为变量分配内存情况
->
->   (复杂情况下还有引用声明)
->
->   **C++和C/Pascal不同,变量声明不需要只在开始全部声明**
+`int carrots;`:需要的内存+内存单元的名称(carrots为变量)
+
+定义声明语句:使得编译器为变量分配内存情况
+
+(复杂情况下还有引用声明)
+
+**C++和C/Pascal不同,变量声明不需要只在开始全部声明**
+
+****
 
 **2.赋值语句**
 
->   赋值的顺序按照从右往左的顺序:
->
->   `yamaha = baldwin = steinway = 88`
->
->   实际情况为:88->steinway->baldwin->yamaha
->
->   赋值可以对变量的值进行修改:
->
->   `carrots = carrots - 1`
+赋值的顺序按照从右往左的顺序:
+
+`yamaha = baldwin = steinway = 88`
+
+实际情况为:88->steinway->baldwin->yamaha
+
+赋值可以对变量的值进行修改:
+
+`carrots = carrots - 1`
+
+****
 
 **3.`cout`/`printf`/`print`**
 
->printf要求对输出的变量进行严格的类型定义:
->
->`printf("print a string : %s\n","25");`
->
->`printf("print a integer : %d\n",25);`
->
->cout存在智能特性(来源于面向对象的特性),`<<`可以自行调整重载
->
->print是C++13.2引入的规则,使用`{}`,存在智能特性
+printf要求对输出的变量进行严格的类型定义:
+
+`printf("print a string : %s\n","25");`
+
+`printf("print a integer : %d\n",25);`
+
+cout存在智能特性(来源于面向对象的特性),`<<`可以自行调整重载
+
+print是C++13.2引入的规则,使用`{}`,存在智能特性
 
 ## 3.Oth C++语句
 
@@ -290,131 +312,137 @@ int main()
 
 **1.`cin`语句**
 
->   也是`iostream`中的一个智能对象,可以从输入流中抽取字符
+也是`iostream`中的一个智能对象,可以从输入流中抽取字符
 
 **2.拼接`cout`语句**
 
->   一种面对结果的编程方法
+一种面对结果的编程方法
 
 **3.类简介**
 
->   类是C++中面向对象编程(OOP)的核心概念
->
->   要定义类,需要描述`表示什么信息`和`可对数据执行的操作`
->
->   类描述了一种数据类型的全部属性,对象是根据这下描述创建的实体
->
->   `对于`int carrots`:
->
->   >创建了一个类型为`int`的变量(carrots)
->
->   对于`cout`:
->
->   >   它是一个`ostream`类对象(实体)
->
->   对于`cin`:
->
->   >   它是一个`istream`类对象(实体)
+类是C++中面向对象编程(OOP)的核心概念
+
+要定义类,需要描述`表示什么信息`和`可对数据执行的操作`
+
+类描述了一种数据类型的全部属性,对象是根据这下描述创建的实体
+
+对于`int carrots`:
+
+>   创建了一个类型为`int`的变量(carrots)
+
+对于`cout`:
+
+>   它是一个`ostream`类对象(实体)
+
+对于`cin`:
+
+>   它是一个`istream`类对象(实体)
 
 ## ４.函数
 
 **1.函数简介**
 
->   这里主要讨论有返回值和无返回值的两种函数
->
->   函数的具体内容在Chap7和Chap8
+这里主要讨论有返回值和无返回值的两种函数
+
+函数的具体内容在Chap7和Chap8
+
+****
 
 **2.有返回值的函数**
 
->   有返回值的函数将生成一个值,这个值可以在任意表达式/变量中使用
+有返回值的函数将生成一个值,这个值可以在任意表达式/变量中使用
+
+例如`sqrt()`的表达式中会进行`sqrt()`的**函数调用**
+
+`()`中的值是传递给函数的值,也叫参数,比如`sqrt(4)`
+
+**函数原型(prototype):指出涉及的函数中,值类型的限定**
+
+>   比如`sqrt()`的原型:`double sqrt(double)`
 >
->   例如`sqrt()`的表达式中会进行`sqrt()`的**函数调用**
->
->   `()`中的值是传递给函数的值,也叫参数,比如`sqrt(4)`
->
->   **函数原型(prototype):指出涉及的函数中,值类型的限定**
->
->   >比如`sqrt()`的原型:`double sqrt(double)`
->   >
->   >所以调用的时候也应该是`double`数据类型
->   >
->   >```cpp
->   >double x; 
->   >x = sqrt(3.8);
->   >```
->
->   **函数原型和函数定义的区别:**
->
->   >   函数原型只描述函数接口,描述的是发送值和返回值
->   >
->   >   函数定义包含函数的具体代码
->
->   **函数原型的使用**
->
->   >```cpp
->   >#include <iostream>
->   >
->   >// 函数原型,更方便维护
->   >double calculate_area(double radius);
->   >
->   >int main() {
->   >    double r = 5.0;
->   >    // 在这里调用函数，因为前面有原型，编译器知道它是合法的
->   >    double area = calculate_area(r);
->   >    std::cout << "The area is: " << area << std::endl;
->   >    return 0;
->   >}
->   >
->   >// 函数定义
->   >double calculate_area(double radius) {
->   >    return 3.14159 * radius * radius;
->   >}
->   >```
->   >
->   >1.对于大项目更容易维护
->   >
->   >2.对于编译器友好
->   >
->   >**(能写尽写)**
->   >
->   >**(如果函数定义在main之前就可以不用写原型)**
->   >
->   >**(如果头文件中定义了原型,可以直接调用)**
->   >
->   >**<font color=red>函数原型入口是参数列表,如果参数列表相同无法重载</font>**
+>   所以调用的时候也应该是`double`数据类型
 >
 >   ```cpp
->   // 2.4 sqrt.cpp
->   #include <iostream>
->   #include <cmath> // old one:<math.h>
->   int main()
->   {
->       using namespace std;
->       double area;
->       cout << "Enter the floor area , in squar feet , of your home";
->       cin >> area;
->       double side;
->       side = sqrt(area);
->       cout << "That's the equilvalent of a square" << side
->            << " feet to the side" << endl;
->       cout << "How fascinating!" << endl;
->       return 0;
+>double x; 
+>   x = sqrt(3.8);
+>```
+
+**函数原型和函数定义的区别:**
+
+>   函数原型只描述函数接口,描述的是发送值和返回值
+>
+>   函数定义包含函数的具体代码
+
+**函数原型的使用**
+
+>   ```cpp
+>#include <iostream>
+>   
+>// 函数原型,更方便维护
+>   double calculate_area(double radius);
+>
+>   int main() {
+>double r = 5.0;
+>   // 在这里调用函数，因为前面有原型，编译器知道它是合法的
+>   double area = calculate_area(r);
+>   std::cout << "The area is: " << area << std::endl;
+>   return 0;
 >   }
->   ```
->
->   `typename variable-name`是变量声明的语法,先声明再赋值
->
->   `typename variable-name = expression`是变量初始化的语法,直接赋值
+>   
+>   // 函数定义
+>   double calculate_area(double radius) {
+>return 3.14159 * radius * radius;
+>   }
+>```
+>   
+>   1.对于大项目更容易维护
+>   
+>2.对于编译器友好
+>   
+>**(能写尽写)**
+>   
+>   **(如果函数定义在main之前就可以不用写原型)**
+>   
+>   **(如果头文件中定义了原型,可以直接调用)**
+>   
+>   **<font color=red>函数原型入口是参数列表,如果参数列表相同无法重载</font>**
+
+```cpp
+// 2.4 sqrt.cpp
+#include <iostream>
+#include <cmath> // old one:<math.h>
+int main()
+{
+    using namespace std;
+    double area;
+    cout << "Enter the floor area , in squar feet , of your home";
+    cin >> area;
+    double side;
+    side = sqrt(area);
+    cout << "That's the equilvalent of a square" << side
+         << " feet to the side" << endl;
+    cout << "How fascinating!" << endl;
+    return 0;
+}
+```
+
+`typename variable-name`是变量声明的语法,先声明再赋值
+
+`typename variable-name = expression`是变量初始化的语法,直接赋值
+
+****
 
 **2.函数变体**
 
->1.传入双参数的函数:`double pow(double,double)`计算底和对应的幂
->
->2.不接受参数的函数:`int rand(void)`一般直接调用`guess  = rand()`
->
->3.没有返回值的函数:`void print_num(double)`直接调用
->
->**没有返回值的函数称作:过程(procedure)或子程序(subroutine)**
+1.传入双参数的函数:`double pow(double,double)`计算底和对应的幂
+
+2.不接受参数的函数:`int rand(void)`一般直接调用`guess  = rand()`
+
+3.没有返回值的函数:`void print_num(double)`直接调用
+
+**没有返回值的函数称作:过程(procedure)或子程序(subroutine)**
+
+****
 
 **3.自定义函数**
 
@@ -459,6 +487,8 @@ int main()
 >
 >计算机操作系统看作调用程序,因此`main()`返回给操作系统(退出值)
 
+****
+
 **4.用户定义的有返回值的函数**
 
 >   ```cpp
@@ -482,21 +512,23 @@ int main()
 >   }
 >   ```
 
+****
+
 **5.在多函数程序中使用using编译指令**
 
->   `using namespace std;`来访问位于名称空间std中的cout定义
+`using namespace std;`来访问位于名称空间std中的cout定义
+
+位置:可以放在最前面作用于所有函数/只放在`main()`函数输出
+
+using编译指令的几种形式:
+
+>   1.作用于所有函数:`using namespace std`放在最前面
 >
->   位置:可以放在最前面作用于所有函数/只放在`main()`函数输出
+>   2.作用于特定函数:`using namespace std`放在函数前面
 >
->   using编译指令的几种形式:
+>   3.使用指定的元素:`using std::cout`
 >
->   >1.作用于所有函数:`using namespace std`放在最前面
->   >
->   >2.作用于特定函数:`using namespace std`放在函数前面
->   >
->   >3.使用指定的元素:`using std::cout`
->   >
->   >4.完全不使用using编译指令:`std::cout`
+>   4.完全不使用using编译指令:`std::cout`
 
 ## 5.Review
 
