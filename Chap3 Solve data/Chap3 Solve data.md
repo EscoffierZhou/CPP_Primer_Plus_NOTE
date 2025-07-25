@@ -29,7 +29,15 @@ unsigned short、short、char、unsigned char、signed char和bool。
 
 12.强制类型转换。
 
+****
 
+[3.1 C++的简单变量]()
 
+[3.2 C++的const限定符]()
 
+[3.3 C++的浮点数]()
+
+[3.4 C++的算术运算符]()
+
+[3.5 作业]()
 
