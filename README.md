@@ -7,3 +7,7 @@
 [Chap3 C++数据类型及类型转换](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap3%20Solve%20data/3.0%20Chap3%20Solve%20data.md)
 
 [Chap4 C++基本数据结构](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap4%20Data%20structure/4.0%20Chap4%20Data%20structure.md)
+
+[Chap5 C++循环结构](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap5%20Iteration%20expression/5.0%20Iteration%20expression.md)
+
+最近更新:Chap5(2025.07.29)
