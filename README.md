@@ -10,4 +10,6 @@
 
 [Chap5 C++循环结构](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap5%20Iteration%20expression/5.0%20Iteration%20expression.md)
 
-最近更新:Chap5(2025.07.29)
+[Chap6 C++判别式/文件处理](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap6%20If-else%20and%20logic%20operator/6.0%20Chap6%20If-else%20and%20logic%20operator.md)
+
+最近更新:Chap6(2025.07.31)
