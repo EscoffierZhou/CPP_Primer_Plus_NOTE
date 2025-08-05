@@ -12,4 +12,6 @@
 
 [Chap6 C++判别式/文件处理](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap6%20If-else%20and%20logic%20operator/6.0%20Chap6%20If-else%20and%20logic%20operator.md)
 
-最近更新:Chap6(2025.07.31)
+[Chap7 C++函数基本运用](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap7%20Function/7.0%20Chap7%20Function.md)
+
+最近更新:Chap7(2025.08.05)
