@@ -14,4 +14,6 @@
 
 [Chap7 C++函数基本运用](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap7%20Function/7.0%20Chap7%20Function.md)
 
-最近更新:Chap7(2025.08.05)
+[Chap8 C++函数高级用法](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap8%20Advanced%20Function/8.0%20Chap8%20Function.md)
+
+最近更新:Chap8(2025.08.09)
