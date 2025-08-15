@@ -1,5 +1,11 @@
 # Chap10.6 Class scope
 
+目前学过的:在全局(文件)作用域的变量和局部(代码)的作用域
+
+>   全局就在文件任何地方使用,局部变量只能在其所属的代码块中使用
+
+**新的一种作用域:类作用域**
+
 ## 在类中必须声明的作用域
 
 在类中定义的名称（如类数据成员名和类成员函数名）的作用域都为整个类，
@@ -29,8 +35,132 @@ void Stock::update(double price)
 
 **最后,在类声明或成员函数定义中,可以使用未修饰的成员名称**
 
->   构造函数名称在被调用时才能被识别,因为它的名称与类名相同
+>   也就是说在类定义中声明了`set_tot()`,那么类方法的声明就不需要作用域
 >
->   在其他情况下,使用类成员名时,必须根据上下文使用直接成员运算符(`.`),间接运算符(`->`),作用域解析运算符(`::`)
+>   ```cpp
+>   class Stock {
+>   private:
+>       double total_val;
+>   public:
+>       void set_tot();
+>       void sell(int num, double price) {
+>           set_tot(); // 这里没有使用Stock::Stock set_tot()
+>       }
+>   };
+>   ```
+>
+>   在其他情况下,必须根据上下文使用:
+>
+>   直接成员运算符(`.`)
+>
+>   ```cpp
+>   Stock myStock;	// 类对象
+>   myStock.sell(10, 25.0); // 使用对象修饰
+>   ```
+>
+>   间接运算符(`->`)
+>
+>   ```cpp
+>   Stock* stock_ptr = new Stock(); // 类对象指针
+>   stock_ptr->sell(10, 25.0); // 使用指针限定
+>   ```
+>
+>   作用域解析运算符(`::`)(在类外部定义函数)
 
-...
+```cpp
+// Eg:对上面作用域的说明
+class Ik
+{
+private:
+    int fuss;
+public:
+    Ik(int f = 9){fuss = f;}
+    void ViewIk() const;
+};
+void Ik::ViewIk() const
+{
+    cout << fuss << endl;
+}
+int main()
+{
+    Ik * pik = new Ik;['']
+    Ik ee = Ik(0);
+    ee.ViewIk();
+    pik->ViewIk();
+}
+```
+
+## 1.作用域为类的常量
+
+**目标:在所有对象中创建一个共享的常量**
+
+```cpp
+class Bakery
+{
+private:
+    const int Months = 12; //INVLALID
+    double costs[Months];
+}
+```
+
+>   声明类的时候并没有创建对象,没有存储值的空间
+
+**常量声明方法1:在类中声明一个枚举**
+
+>   (因为类声明中声明的**枚举的作用域为整个类**)
+>
+>   ```cpp
+>   class Bakery
+>   {
+>   private:
+>       enum{Months = 12};
+>       double costs[Months];
+>   }
+>   ```
+
+**常量声明方法2(标准做法):使用关键字`static`**
+
+>   ```cpp
+>   class bakery
+>   {
+>   private:
+>       static const int Months = 12;
+>       double costs[Months];
+>   }
+>   ```
+
+## 2.作用域内枚举(C++11)
+
+传统的枚举如果两个枚举定义中的枚举量相同(哪怕部分)则会发生冲突
+
+>   ```cpp
+>   enum egg{Small,Medium,Large,Jumbo};
+>   enum t_shirt{Small,Medium,Large,Jumbo}; // CONFLICT!!
+>   ```
+>
+>   (所以可以通过声明作用域避免这种冲突)(也可以使用`struct`代替`class`)
+>
+>   ```cpp
+>   enum class egg{Small,Medium,Large,Jumbo};
+>   enum class t_shirt{Small,Medium,Large,Jumbo}; // 声明为类
+>   // 使用方法:需要作用域+变量名
+>   egg choice = egg::Large;
+>   t_shirt Floyd = t_shirt::Large;
+>   ```
+>
+>   有些情况下常规枚举将自动转换为整型,**但作用域内枚举不能隐式转换为整型**
+>
+>   ```cpp
+>   enum egg_old = {Small,Medium,Large,Jumbo};
+>   enum class t_shirt {Small,Medium,Large,Xlarge};
+>   egg_old one = Medium;
+>   t_shirt rolf = t_shirt::Large;
+>   int king = one;
+>   int ring = rolf;
+>   if(king < Jumbo)
+>       std::cout << "Jumbo converted to int before comparison,\n";
+>   if(king < t_shirt::Medium)
+>       std::cout << "N"
+>   ```
+>
+>   
