@@ -153,14 +153,17 @@ private:
 >   ```cpp
 >   enum egg_old = {Small,Medium,Large,Jumbo};
 >   enum class t_shirt {Small,Medium,Large,Xlarge};
->   egg_old one = Medium;
->   t_shirt rolf = t_shirt::Large;
->   int king = one;
->   int ring = rolf;
+>   
+>   egg_old one = Medium;         // 声明一个枚举类对象
+>   t_shirt rolf = t_shirt::Large;// 声明一个避免冲突的枚举类对象
+>   
+>   int king = one;				  // 无作用域限制的隐式转换
+>   //int ring = rolf;			  // INVALID!!! 
+>   int Frodo = int(t_shirt::Small);
 >   if(king < Jumbo)
->       std::cout << "Jumbo converted to int before comparison,\n";
+>      std::cout << "Jumbo converted to int before comparison,\n";
 >   if(king < t_shirt::Medium)
->       std::cout << "N"
+>      std::cout << "Not Allowed :< not defined for scoped enum.\n";
 >   ```
 >
 >   
