@@ -18,4 +18,6 @@
 
 [Chap9 C++作用域和命名空间](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap9%20Storage%20model%20and%20namespace/9.0%20Chap9%20namespace.md)
 
-最近更新:Chap9(2025.08.11)
+[Chap10 C++面向对象编程OOP以及类和类作用域](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap10%20Object%20and%20Class/Chap10.0%20Object%20Class.md)
+
+最近更新:Chap10(2025.08.17)
