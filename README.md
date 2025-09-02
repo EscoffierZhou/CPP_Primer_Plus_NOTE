@@ -21,3 +21,5 @@
 [Chap10 C++面向对象编程OOP以及类和类作用域](https://github.com/EscoffierZhou/CPP_Primer_Plus_NOTE/blob/main/Chap10%20Object%20and%20Class/Chap10.0%20Object%20Class.md)
 
 最近更新:Chap10(2025.08.17)
+
+**(在学校开始复习11408,鉴于OOP已经学完,后续看情况更新)**
